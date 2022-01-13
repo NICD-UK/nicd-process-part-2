@@ -1,0 +1,225 @@
+---
+title: "NICD Data Science Process"
+subtitle: "Part 2"
+author: "Matthew Edwards"
+date: "25/11/2021"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Introduction
+
+## Data Science Processes
+
+A **data science process** includes:
+
+1. data science workflow (e.g. CRISP-DM)
+2. collaboration framework (e.g. Scrum)
+
+The data science workflow provides the **what** and the collaboration framework provides the **how**. A popular example of a data science process is:
+
+- **Microsoft**: Team Data Science Process (TDSP)
+
+## Data Science Workflow
+
+The *focus* of this presentation is on data science workflows. The three most popular data science workflows are:
+
+1. CRISP-DM
+2. TDSP
+3. SEMMA
+
+## Data Science Workflow
+
+A critical literature review of data science processes: [Data Science Methodologies](https://arxiv.org/pdf/2106.07287.pdf)
+
+I selected the CRISP-DM data science workflow because:
+
+- [most popular data science workflow](https://www.datascience-pm.com/crisp-dm-still-most-popular/) (49% usage)
+- hierarchical structure with phases, tasks and processes
+- comprehensive 76 page [CRISP-DM guide](https://www.the-modeling-agency.com/crisp-dm.pdf)
+- communicable CRISP-DM figure and table (see guide)
+
+# CRISP-DM
+
+## CRISP-DM
+
+CRISP-DM consists of 6 **phases** and 24 **tasks**. The tasks are described in a 76 page [CRISP-DM guide](https://www.the-modeling-agency.com/crisp-dm.pdf). The six phases of CRISP-DM are:
+
+1. Business Understanding
+2. Data Understanding
+3. Data Preparation
+4. Modelling
+5. Evaluation
+6. Deployment
+
+These phases are represented as *vertices* in a directed graph where the *edges* represent transitions between phases.
+
+## CRISP-DM (figure)
+
+![CRISP-DM guide, p. 10](figures/crisp-dm-figure.png){width=60%}
+
+## CRISP-DM (table)
+
+![CRISP-DM guide, p. 12](figures/crisp-dm-table.png){width=100%}
+
+## CRISP-DM
+
+I am going to modify the CRISP-DM data science workflow at the task level. I will propose modifications of the **tasks** and **outcomes**:
+
+- **delete, insert and update tasks**
+- rename tasks
+- **delete, insert and update outcomes**
+- rename outcomes
+
+I have renamed four of the 26 tasks. These changes where for naming consistency.
+
+## CRISP-DM
+
+Modifications to the Data Preparation and Modelling phases are related to organising transformations (part 1):
+
+- order and partition of transformations across **data pipeline**
+    - partition into clean, wrangle, model/report
+- partition of transformations across **data sources/products**
+    - partition for each data source when cleaning
+    - partition for each data product when wrangling
+
+# Business Understanding
+
+## Business Understanding
+
+1. **Determine Business Objectives**: *background*; *business objectives*; *business success criteria*
+2. **Assess Situation**: *inventory of resources*; *requirements, assumptions and constraints*; *risks and contingencies*; *terminology*; *costs and benefits*
+3. **Determine Data Science Questions**: *data science questions*^a^; *data science success criteria*
+4. **Plan Project**: *project plan*; *initial assessment of tools and techniques*
+
+**Modifications**:
+
+- **updated outcome**: ^a^*data mining goals*
+
+## Business Understanding
+
+I have changed *data mining goals* into *data science questions* for two reasons:
+
+1. *data science* is the more modern term for *data mining*
+2. can incorporate the *data questions* introduced in [What is the question?](https://www.aaas.org/sites/default/files/Stats_What_Question_2015.pdf?g_zGQR5m3rDJqwXqJ3DxLI5pXZ3hNdHk)
+
+    - **questions**: descriptive, exploratory, inferential, predictive, causal and mechanistic
+
+## Business Understanding
+
+![](figures/questions.png){width=80%}
+
+# Data Understanding
+
+## Data Understanding
+
+1. **Collect Raw Data**: *raw data*; *initial cleaning scripts*^1^; *initial clean data*
+2. **Describe Data**: *description report*
+3. **Explore Data**: *exploration report*
+
+**Modifications**: 
+
+- **insert outcomes**: *raw data*; *initial clean data*
+- **updated outcome**: *initial data collection report*^1^
+- **delete task**: **Verify Data Quality**
+
+## Data Understanding
+
+The **Collect Raw Data** task involves importing raw data from data sources and writing that data. This results in:
+
+- initial cleaning script (*not cleaning*)
+- initial clean data (*not clean*)
+
+The reports can be generated from this initial clean data. This facilitates iteration of the **Clean Data** task.
+
+## Data Undrestanding
+
+The **Verify Data Quality** task is deleted since it is redundant. The quality of the data can be assessed with the **Describe Data** and **Explore Data** task.
+
+## Data Understanding
+
+The description report will support the data preparation phase (e.g. **Clean Data** task):
+
+- number of rows and columns
+- column names and types
+- column statistics (e.g. univariate and bivariate)
+
+The exploration report will support the business understanding phase (e.g. business objectives and data science questions). The data description report can be output with:
+
+1. [pandas profiling](https://pandas-profiling.github.io/pandas-profiling/docs/master/rtd/) package in `Python`
+2. [dlookr](https://choonghyunryu.github.io/dlookr/index.html) package in `R`
+
+# Data Preparation
+
+## Data Preparation
+
+1. **Clean Data**: *cleaning scripts*; *clean data*
+2. **Wrangle Data**: *wrangling scripts*; *wrangle data*
+
+**Modification**:
+
+- **outputs added**: *clean data*; *wrangle data*; *wrangling scripts*
+- **tasks combined**: **Integrate Data**, **Construct Data** and **Select Data**
+- **task removed**: **Format Data**
+
+## Data Preparation
+
+The tasks:
+
+- **Integrate Data** (e.g. join data)
+- **Construct Data** (e.g. feature engineering)
+- **Select Data** (e.g. filtering examples and selecting features)
+
+were combined into the **Wrangle Data** task. These tasks where in the wrong order and the outcomes where too abstract. The **Clean Data** and **Wrangle Data** tasks each output scripts and data.
+
+## Data Preparation
+
+The **Format Data** task was deleted because it was data preprocessing. Every modelling techniques requires a different data preprocessing. Including this task before the **Select Modelling Techniques** tasks is problematic. This task is now implicit in the **Build Model** task. 
+
+# Modelling
+
+## Modelling
+
+1. **Select Modelling Techniques**: *modelling techniques*; *modelling assumptions*
+2. **Select Test Design**: *test design*
+3. **Build Model**: *modelling scripts*; *models*; *model descriptions*
+4. **Assess Model**: *model assessment*
+
+**Modifications**:
+
+- **output added**: *modelling scripts*
+
+## Modelling
+
+The *modelling scripts* outcome was a natural addition to the **Build Model** task. 
+
+# Evaluation
+
+## Evaluation
+
+1. **Evaluate Results**: *evaluation of data science results with respect to business success criteria*; *approved models*
+2. **Review Process**: *process review*
+3. **Determine Next Steps**: *possible actions*; *decision*
+
+## Deployment
+
+1. **Plan Deployment**: *deployment plan*
+2. **Plan Monitoring and Maintenance**: *monitoring and maintenance plan*
+3. **Produce Final Report**: *final report*; *final presentation*
+4. **Review Project**: *project review*
+
+# Project Template
+
+## Project Template
+
+The outputs can be mapped to file and directories in a [project template](https://github.com/NICD-UK/project-template/blob/main/%7B%7Bcookiecutter.repo_name%7D%7D/README.md). The `README.md` of the project template includes:
+
+- project organisation (directory structure)
+- the phases, tasks and outcomes of CRISP-DM
+- the tasks have section numbers from the [CRISP-DM Guide](https://www.the-modeling-agency.com/crisp-dm.pdf)
+- outputs have a location in the directory structure
+
+# Questions 
