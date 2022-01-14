@@ -204,12 +204,21 @@ The *modelling scripts* outcome was a natural addition to the **Build Model** ta
 2. **Review Process**: *process review*
 3. **Determine Next Steps**: *possible actions*; *decision*
 
+# Deployment
+
 ## Deployment
 
 1. **Plan Deployment**: *deployment plan*
 2. **Plan Monitoring and Maintenance**: *monitoring and maintenance plan*
 3. **Produce Final Report**: *final report*; *final presentation*
 4. **Review Project**: *project review*
+
+## Improvements
+
+- both the *process review* and *project review* will help improve the workflow
+- [TDSP](https://docs.microsoft.com/en-us/azure/architecture/data-science-process/lifecycle) workflow has a more refined **Business Understanding** phase with "sharp" data science questions and [SMART](https://en.wikipedia.org/wiki/SMART_criteria) success criteria
+- TDSP also has a more modern **Data Acquisition and Understanding** phase that considers aspects of streaming vs batch, small vs big data, structured vs unstructured data etc. 
+- some tasks need additional guidance (i.e. tasks in the Data Preparation and Modelling phases)
 
 # Project Template
 
