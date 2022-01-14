@@ -2,7 +2,7 @@
 title: "NICD Data Science Process"
 subtitle: "Part 2"
 author: "Matthew Edwards"
-date: "25/11/2021"
+date: "`r Sys.Date()`"
 output: ioslides_presentation
 ---
 
@@ -38,7 +38,7 @@ A critical literature review of data science processes: [Data Science Methodolog
 I selected the CRISP-DM data science workflow because:
 
 - [most popular data science workflow](https://www.datascience-pm.com/crisp-dm-still-most-popular/) (49% usage)
-- hierarchical structure with phases, tasks and processes
+- hierarchical structure with phases, tasks and outcomes
 - comprehensive 76 page [CRISP-DM guide](https://www.the-modeling-agency.com/crisp-dm.pdf)
 - communicable CRISP-DM figure and table (see guide)
 
@@ -55,7 +55,7 @@ CRISP-DM consists of 6 **phases** and 24 **tasks**. The tasks are described in a
 5. Evaluation
 6. Deployment
 
-These phases are represented as *vertices* in a directed graph where the *edges* represent transitions between phases.
+These phases are represented as *vertices* in a directed graph were the *edges* represent transitions between phases.
 
 ## CRISP-DM (figure)
 
@@ -173,7 +173,7 @@ The tasks:
 - **Construct Data** (e.g. feature engineering)
 - **Select Data** (e.g. filtering examples and selecting features)
 
-were combined into the **Wrangle Data** task. These tasks where in the wrong order and the outcomes where too abstract. The **Clean Data** and **Wrangle Data** tasks each output scripts and data.
+were combined into the **Wrangle Data** task. These tasks were in the wrong order and the outcomes where too abstract. The **Clean Data** and **Wrangle Data** tasks each output scripts and data.
 
 ## Data Preparation
 
@@ -216,7 +216,7 @@ The *modelling scripts* outcome was a natural addition to the **Build Model** ta
 ## Improvements
 
 - both the *process review* and *project review* will help improve the workflow
-- [TDSP](https://docs.microsoft.com/en-us/azure/architecture/data-science-process/lifecycle) workflow has a more refined **Business Understanding** phase with "sharp" data science questions and [SMART](https://en.wikipedia.org/wiki/SMART_criteria) success criteria
+- [TDSP](https://docs.microsoft.com/en-us/azure/architecture/data-science-process/lifecycle) workflow has a more refined **Business Understanding** phase with "sharp" questions and [SMART](https://en.wikipedia.org/wiki/SMART_criteria) success criteria
 - TDSP also has a more modern **Data Acquisition and Understanding** phase that considers aspects of streaming vs batch, small vs big data, structured vs unstructured data etc. 
 - some tasks need additional guidance (i.e. tasks in the Data Preparation and Modelling phases)
 
